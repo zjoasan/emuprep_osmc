@@ -21,7 +21,9 @@ for f in *; do
 done
 LISTA=${ADDONNAME%%*( )}
 ADDONNAME="$LISTA game.controller.snes game.controller.default"
-cp -R $LISTA /home/osmc/.kodi/addons
+for folder in $LISTA; do
+   cp -R $folder /home/osmc/.kodi/addons
+done
 cd ..
 rm -rf cp-tempo
 
