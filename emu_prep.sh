@@ -3,6 +3,13 @@
 shopt -s nullglob
 LISTA=""
 ADDONNANME=""
+
+#testing if we should bugout before trying to automate repo install
+if [ -d "/media/H*" ] || [ -d "/media/h*" ] || [ -d "/home/osmc/z*" ] || [ -d "/home/osmc/Z*" ]; then
+  echo "Found conflicting folder in your device, folder begining on H or h in /media or folder beining with Z or z in osmc-homefolder."
+  exit 1
+fi
+
 # Downloading Emulator binary repository  and helper repository(bios and loaders)
 cd /home/osmc && mkdir zaddons && cd zaddons
 wget -O utils-repo.zip https://github.com/zach-morris/repository.zachmorris/releases/download/1.0.0/repository.zachmorris-1.0.0.zip
