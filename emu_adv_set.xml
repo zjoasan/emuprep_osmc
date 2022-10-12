@@ -1,0 +1,11 @@
+<advancedsettings>
+  <videoextensions>
+    <remove>.bin|.img|.iso|.zip</remove>
+  </videoextensions>
+  <musicextensions>
+    <remove>.cue|.zip</remove>
+  </musicextensions>
+  <pictureextensions>
+    <remove>.zip</remove>
+  </pictureextensions>
+</advancedsettings>

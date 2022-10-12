@@ -1,0 +1,4 @@
+<settings version="2">
+    <setting id="addons.unknownsources">true</setting>
+    <setting id="addons.updatemode" default="true">1</setting>
+</settings>
