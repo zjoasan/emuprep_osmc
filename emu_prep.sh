@@ -39,15 +39,15 @@ systemctl stop mediacenter
 sqlite3 /home/osmc/.kodi/userdata/Database/Addons33.db "UPDATE installed SET enabled = 1  WHERE addonID = 'game.libretro'"
 UNKNOWNSRCS=/home/osmc/.kodi/userdata/guisettings.xml
 if [ -f "$UNKNOWNSRCS" ]; then
-   cp $UNKNOWNSRCS ./guisettings_orig.xml
-   /usr/bin/python3 ./fix_kodi-xml_set.py $UNKNOWNSRCS ./unknowsrcs.xml > $UNKNOWNSRCS
+   cp $UNKNOWNSRCS guisettings_orig.xml
+   /usr/bin/python3 fix_kodi-xml_set.py $UNKNOWNSRCS unknowsrcs.xml > $UNKNOWNSRCS
 else 
    cp ./unknowsrcs.xml $UNKNOWNSRCS
 fi
 FILEN=/home/osmc/.kodi/userdata/advancedsettings.xml
 if [ -f "$FILEN" ]; then
-   cp $FILEN ./advancedsettings_orig.xml
-   /usr/bin/python3 ./fix_kodi-xml_set.py $FILEN ./emu_adv_set.xml > $FILEN
+   cp $FILEN advancedsettings_orig.xml
+   /usr/bin/python3 fix_kodi-xml_set.py $FILEN emu_adv_set.xml > $FILEN
 else 
    cp ./emu_adv_set.xml $FILEN
 fi
