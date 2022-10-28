@@ -39,7 +39,7 @@ systemctl stop mediacenter
 sqlite3 /home/osmc/.kodi/userdata/Database/Addons33.db "UPDATE installed SET enabled = 1  WHERE addonID = 'game.libretro'"
 UNKNOWNSRCS=/home/osmc/.kodi/userdata/guisettings.xml
 if [ -f "$UNKNOWNSRCS" ]; then
-   cp $FILEN ./guisettings_orig.xml
+   cp $UNKNOWNSRCS ./guisettings_orig.xml
    python3 ./fix_adv_set.py ./unknowsrcs.xml > $UNKNOWNSRCS
 else 
    cp ./unknowsrcs.xml $UNKNOWNSRCS
@@ -55,6 +55,8 @@ sqlite3 /home/osmc/.kodi/userdata/Database/Addons33.db "UPDATE installed SET ena
 
 #Enable all controller-profiles
 systemctl start mediacenter
+echo "pause for mediacenter to start inorder to controll it from script!"
+sleep 10
 mctrue=$(pgrep -c "mediacenter")
 if [ $mctrue -ne 0 ]; then
        xbmc-send --action="UpdateLocalAddons"
