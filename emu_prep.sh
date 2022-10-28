@@ -5,8 +5,8 @@ LISTA=""
 ADDONNANME=""
 
 #testing if we should bugout before trying to automate repo install
-if [ -d "/media/H*" ] || [ -d "/media/h*" ] || [ -d "/home/osmc/z*" ] || [ -d "/home/osmc/Z*" ]; then
-  echo "Found conflicting folder in your device, folder begining on H or h in /media or folder beining with Z or z in osmc-homefolder."
+if [ -d "/media/g*" ] || [ -d "/media/G*" ] || [ -d "/home/osmc/h*" ] || [ -d "/home/osmc/H*" ] || [ -d "/media/i*" ] || [ -d "/media/I*" ] || [ -d "/home/osmc/w*" ] || [ -d "/home/osmc/W*" ] || [ -d "/media/x*" ] || [ -d "/media/X*" ] || [ -d "/home/osmc/y*" ] || [ -d "/home/osmc/Y*" ] || [ -d "/home/osmc/z*" ] || [ -d "/home/osmc/Z*" ]; then
+  echo "Found conflicting folder in your device, probably automounted drive. Since a folder in /media begins with g-i, G-I, w-z or W-Z would effect install, we halt here"
   exit 1
 fi
 
