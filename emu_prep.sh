@@ -40,14 +40,14 @@ sqlite3 /home/osmc/.kodi/userdata/Database/Addons33.db "UPDATE installed SET ena
 UNKNOWNSRCS=/home/osmc/.kodi/userdata/guisettings.xml
 if [ -f "$UNKNOWNSRCS" ]; then
    cp $UNKNOWNSRCS ./guisettings_orig.xml
-   python3 ./fix_adv_set.py ./unknowsrcs.xml > $UNKNOWNSRCS
+   /usr/bin/python3 ./fix_gui_set.py ./unknowsrcs.xml > $UNKNOWNSRCS
 else 
    cp ./unknowsrcs.xml $UNKNOWNSRCS
 fi
 FILEN=/home/osmc/.kodi/userdata/advancedsettings.xml
 if [ -f "$FILEN" ]; then
    cp $FILEN ./advancedsettings_orig.xml
-   python3 ./fix_adv_set.py ./emu_adv_set.xml > $FILEN
+   /usr/bin/python3 ./fix_adv_set.py ./emu_adv_set.xml > $FILEN
 else 
    cp ./emu_adv_set.xml $FILEN
 fi
