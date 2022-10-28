@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+# fix_kodi-xml_set.py destination.xml custom.xml
+
 import sys
 from xml.etree import ElementTree
 
