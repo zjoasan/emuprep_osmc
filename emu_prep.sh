@@ -5,14 +5,14 @@ LISTA=""
 ADDONNANME=""
 
 #testing if we should bugout before trying to automate repo install
-if [ -d "/media/g*" ] || [ -d "/media/G*" ] || [ -d "/home/osmc/h*" ] || [ -d "/home/osmc/H*" ] || [ -d "/media/i*" ] || [ -d "/media/I*" ] || [ -d "/home/osmc/w*" ] || [ -d "/home/osmc/W*" ] || [ -d "/media/x*" ] || [ -d "/media/X*" ] || [ -d "/home/osmc/y*" ] || [ -d "/home/osmc/Y*" ] || [ -d "/home/osmc/z*" ] || [ -d "/home/osmc/Z*" ]; then
-  echo "Found conflicting folder in your device, probably automounted drive. Since a folder in /media begins with g-i, G-I, w-z or W-Z would effect install, we halt here"
+if [ -d "/media/g*" ] || [ -d "/media/G*" ] || [ -d "/home/osmc/h*" ] || [ -d "/home/osmc/H*" ] || [ -d "/media/i*" ] || [ -d "/media/I*" ]; then
+  echo "Found conflicting folder in your device, probably automounted drive. Since a folder in /media begins with g-i or G-I would effect install, we halt here"
   exit 1
 fi
 
 # Downloading Emulator binary repository  and helper repository(bios and loaders)
 cd /home/osmc && mkdir zaddons && cd zaddons
-wget -O utils-repo.zip https://github.com/zach-morris/repository.zachmorris/releases/download/1.0.0/repository.zachmorris-1.0.0.zip
+wget -O zutils-repo.zip https://github.com/zach-morris/repository.zachmorris/releases/download/1.0.0/repository.zachmorris-1.0.0.zip
 wget -O games-repo.zip https://github.com/zach-morris/kodi_libretro_buildbot_game_addons/raw/main/repository.kodi_libretro_buildbot_game_addons_le_armhf.zip
 cd ..
 
@@ -76,7 +76,7 @@ if [ $mctrue -ne 0 ]; then
 	   kodi-send --action="Select" ; sleep 2 ; 
 	   kodi-send --action="JumpSMS9" ; sleep 2 ; 
 	   kodi-send --action="Select" ; sleep 2 ; 
-	   kodi-send --action="JumpSMS8" ; sleep 2 ; 
+	   kodi-send --action="JumpSMS9" ; sleep 2 ; 
 	   kodi-send --action="Select"
 	   sleep 10
 	   #installing gamebot repo
