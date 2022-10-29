@@ -3,6 +3,19 @@
 shopt -s nullglob
 LISTA=""
 ADDONNANME=""
+SCRIPT_PATH="${BASH_SOURCE}"
+while [ -L "${SCRIPT_PATH}" ]; do
+  TARGET="$(readlink "${SCRIPT_PATH}")"
+  if [[ "${TARGET}" == /* ]]; then
+    SCRIPT_PATH="$TARGET"
+  else
+    SCRIPT_PATH="$(dirname "${SCRIPT_PATH}")/${TARGET}"
+  fi
+done
+$FOLDER=$SCRIPT_PATH
+XMLMAGIC="$FOLDER/fix_kodi-xml_set.py"
+GUICHANGE="$FOLDER/unknowsrcs.xml"
+ADSSET="$FOLDER/emu_adv_set.xml"
 
 #testing if we should bugout before trying to automate repo install
 if [ -d "/media/g*" ] || [ -d "/media/G*" ] || [ -d "/home/osmc/h*" ] || [ -d "/home/osmc/H*" ] || [ -d "/media/i*" ] || [ -d "/media/I*" ]; then
@@ -14,7 +27,7 @@ fi
 cd /home/osmc && mkdir zaddons && cd zaddons
 wget -O zutils-repo.zip https://github.com/zach-morris/repository.zachmorris/releases/download/1.0.0/repository.zachmorris-1.0.0.zip
 wget -O games-repo.zip https://github.com/zach-morris/kodi_libretro_buildbot_game_addons/raw/main/repository.kodi_libretro_buildbot_game_addons_le_armhf.zip
-cd ..
+cd $FOLDER
 
 #Downlaod and install controller-profiles
 mkdir cp-tempo && cd cp-tempo
@@ -28,8 +41,8 @@ for f in *; do
 done
 LISTA=${ADDONNAME%%*( )}
 ADDONNAME="$LISTA game.controller.snes game.controller.default"
-for folder in $LISTA; do
-   cp -R $folder /home/osmc/.kodi/addons
+for fldr in $LISTA; do
+   cp -R $fldr /home/osmc/.kodi/addons
 done
 cd ..
 rm -rf cp-tempo
@@ -40,14 +53,14 @@ sqlite3 /home/osmc/.kodi/userdata/Database/Addons33.db "UPDATE installed SET ena
 UNKNOWNSRCS=/home/osmc/.kodi/userdata/guisettings.xml
 if [ -f "$UNKNOWNSRCS" ]; then
    cp $UNKNOWNSRCS guisettings_orig.xml
-   /usr/bin/python3 fix_kodi-xml_set.py $UNKNOWNSRCS unknowsrcs.xml > $UNKNOWNSRCS
+   /usr/bin/python3 $XMLMAGIC $UNKNOWNSRCS $GUICHANGE
 else 
    cp ./unknowsrcs.xml $UNKNOWNSRCS
 fi
 FILEN=/home/osmc/.kodi/userdata/advancedsettings.xml
 if [ -f "$FILEN" ]; then
    cp $FILEN advancedsettings_orig.xml
-   /usr/bin/python3 fix_kodi-xml_set.py $FILEN emu_adv_set.xml > $FILEN
+   /usr/bin/python3 $XMLMAGIC $FILEN $ADSSET
 else 
    cp ./emu_adv_set.xml $FILEN
 fi
