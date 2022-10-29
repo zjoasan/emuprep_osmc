@@ -4,7 +4,7 @@ shopt -s nullglob
 LISTA=""
 ADDONNANME=""
 
-XMLMAGIC="fix_kodi-xml_set.py"
+XMLMAGIC="merge-kodi-xml.py"
 GUICHANGE="unknowsrcs.xml"
 ADSSET="emu_adv_set.xml"
 
@@ -48,14 +48,14 @@ sqlite3 /home/osmc/.kodi/userdata/Database/Addons33.db "UPDATE installed SET ena
 UNKNOWNSRCS=/home/osmc/.kodi/userdata/guisettings.xml
 if [ -f "$UNKNOWNSRCS" ]; then
    cp $UNKNOWNSRCS guisettings_orig.xml
-   /usr/bin/python3 fix_guiset_xml.py $UNKNOWNSRCS
+   /usr/bin/python3 $XMLMAGIC $UNKNOWNSRCS $GUICHANGE
 else
    cp ./unknowsrcs.xml $UNKNOWNSRCS
 fi
 FILEN=/home/osmc/.kodi/userdata/advancedsettings.xml
 if [ -f "$FILEN" ]; then
    cp $FILEN advancedsettings_orig.xml
-   /usr/bin/python3 fix_advset_xml.py $FILEN $ADSSET
+   /usr/bin/python3 $XMLMAGIC $FILEN $ADSSET
 else
    cp ./emu_adv_set.xml $FILEN
 fi
