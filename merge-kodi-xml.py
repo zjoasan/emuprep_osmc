@@ -22,7 +22,7 @@ def run(files):
             payload = root
             is_advancedsettings = os.path.basename(filename) == 'advancedsettings.xml'
             is_guisettings = os.path.basename(filename) == 'guisettings.xml'
-            if is_guisettings || is_advancedsettings:
+            if is_guisettings or is_advancedsettings:
                 savexmlfile = filename 
             continue
 
