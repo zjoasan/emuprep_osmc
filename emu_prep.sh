@@ -1,5 +1,5 @@
 #!/bin/bash
-#sudo tar -zxvf controllers.tar.gz -C / --overwrite
+#version 0.06
 shopt -s nullglob
 LISTA=""
 ADDONNANME=""
