@@ -22,6 +22,8 @@ def run(files):
             payload = root
             is_advancedsettings = os.path.basename(filename) == 'advancedsettings.xml'
             is_guisettings = os.path.basename(filename) == 'guisettings.xml'
+            if is_guisettings || is_advancedsettings:
+                savexmlfile = filename 
             continue
 
         else:
@@ -72,6 +74,7 @@ def run(files):
 
     if payload:
         print(ElementTree.tostring(payload))
+        parsed_xml.write(savexmlfile)
 
     else:
         raise Exception('Nothing to output.')
