@@ -16,3 +16,7 @@ This first daft is focused on Vero4k to begin with, I feel obligated to say ther
 There is now some light error checking, will try to eveolve it. Thanks to contributions from a fellow OSMC staffer, the actual python code seems to be working (a side from when my attempts to play with things i know next to nothing about)
 
 Still considering how to make the actual emulator installation easier, either a dedicated homepage or perhaps an interactive questioneer. Since now that we have the repos installed installing a few "often used" emulators, via this script shouldnt be that hard?
+
+Untill then, to install an emulator I'm gonna refer to my previus post on [Snes on 19](https://discourse.osmc.tv/t/how-to-play-snes-on-kodi-19/93142/35) in that post the install procedure for an emulator is bulletpoint 3. And consequensly bullet point 4.
+
+Good luck and Enjoy
